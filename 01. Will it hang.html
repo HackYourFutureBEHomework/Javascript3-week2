@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Will it hang?</title>
+  <link rel="stylesheet" type="text/css" href="data/style.css" />
+</head>
+<body>
+<div class="wrap">
+    <nav>
+        <h1 class="rainbow black">Will it hang?</h1>
+        <button id="button0">
+            function
+        </button>
+        <button id="button1">
+            setTimeout
+        </button>
+        <button id="button2">
+            requestAnimationFrame
+        </button>        
+        <button id="button3">
+            Promise
+        </button>
+    </nav>
+    <div id="content">
+        <p class="empty">Here is some text, try to select me.</p>
+    </div>
+</div>
+<script>
+function sleep(ms) {
+  var expire = new Date().getTime() + ms;
+  while (new Date().getTime() < expire) { }
+}
+
+document.querySelector('#button0').addEventListener('click', () => {
+    function loop(){
+        sleep(50);
+        loop();
+    }
+    loop();
+});
+
+document.querySelector('#button1').addEventListener('click', () => {
+    function loop(){
+        sleep(50);
+        setTimeout(loop, 0);
+    }
+    loop();
+});
+document.querySelector('#button2').addEventListener('click', () => {
+    function loop(){
+        sleep(50);
+        requestAnimationFrame(loop);
+    }
+    loop();
+});
+document.querySelector('#button3').addEventListener('click', () => {
+    function loop(){
+        sleep(50);
+        const p = new Promise((resolve, reject)=>{
+            resolve();
+        });
+        p.then(()=>{
+            loop()
+        });
+    }
+    loop();
+});
+
+</script>       
+</body>
+</html>

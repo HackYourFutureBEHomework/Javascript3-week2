@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Site Race!</title>
+    <link rel="stylesheet" type="text/css" href="data/style.css" />
+</head>
+
+<body>
+
+    <div class="wrap">
+        <h1>Site Race!</h1>
+        <div>
+            <p>
+                <label for="site1">Site 1</label>
+                <input name="site1" id="site1_input" value="https://google.com" />
+            </p>
+            <p>
+
+                <label for="site2">Site 2</label>
+                <input name="site2" id="site2_input" value="https://facebook.com" />
+            </p>
+            <button id="button1">
+                Race!
+            </button>
+          
+        </div>
+        <div id="content">
+            <p class="empty">Content goes here...</p>
+        </div>
+    </div>
+
+    <script>
+
+
+        document.querySelector('#button1').addEventListener('click', () => {
+            // Let them race!
+            const site1 = document.querySelector('#site1_input').value;
+            const site2 = document.querySelector('#site2_input').value;
+            console.log(site1, site2);
+        });
+
+    </script>
+</body>
+
+</html>

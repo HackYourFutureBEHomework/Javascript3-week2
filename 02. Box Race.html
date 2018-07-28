@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Box Race</title>
+  <link rel="stylesheet" type="text/css" href="data/style.css" />
+</head>
+<body>
+<div class="wrap">
+    <h1>Box Race</h1>
+    <nav>
+        <button id="button1">
+            setTimeout
+        </button>
+        <button id="button2">
+            requestAnimationFrame
+        </button>
+    </nav>
+    <div id="content">
+        <p class="empty">May the best box win.</p>
+    </div>
+</div>
+<script>
+document.querySelector('#button1').addEventListener('click', () => {
+    const $content = document.querySelector('#content');
+    const $box = document.createElement('div');
+    $box.className = 'box';
+    $box.style.backgroundColor = 'red'; 
+
+    $content.appendChild($box);
+    let position = 0;
+    function moveBox(){
+        position += 1;
+        $box.style.left = position + 'px';
+        if (position > 1000){
+            $box.remove();
+        } else {
+            setTimeout(moveBox, 0);     
+        }
+    }
+    moveBox();
+});
+document.querySelector('#button2').addEventListener('click', () => {
+    const $content = document.querySelector('#content');
+    const $box = document.createElement('div');
+    $box.className = 'box';
+    $box.style.backgroundColor = 'blue'; 
+
+    $content.appendChild($box);
+    let position = 0;
+    function moveBox(){
+        position += 1;
+        $box.style.left = position + 'px';
+        if (position > 1000){
+            $box.remove();
+        } else {
+            requestAnimationFrame(moveBox);     
+        }
+    }
+    moveBox();
+});
+</script>       
+</body>
+</html>
