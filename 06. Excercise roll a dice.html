@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Roll a dice!</title>
+  <link rel="stylesheet" type="text/css" href="data/style.css" />
+</head>
+<body>
+<div class="wrap">
+    <h1>Roll a dice!</h1>
+    <nav>
+        <button id="button1">
+            GO
+        </button>
+    </nav>
+    <div id="content">
+        <p class="empty"></p>
+    </div>
+</div>
+<script>
+
+/**
+* Returns random value between 1 and 6
+*/
+function rollDice()
+{
+    return Math.floor(Math.random() * 6) + 1;
+}
+
+const $content = document.querySelector('#content');
+document.querySelector('#button1').addEventListener('click', () => {
+    const myPromise = new Promise((resolve, reject)=>{
+        const diceValue = rollDice();
+        /* Implement logic here that calls resolve() with the dice value in case the diceValue is
+         5 or 6, otherwise call resolve() */
+    }).then((diceValue) => {
+        /* Implement logic here that shows that you won in $content, including the value of the dice */
+    }).catch((diceValue) => {
+        /* Implement logic here that shows that you lost in $content, including the value of the dice */
+    })
+});
+
+</script>
+</body>
+</html>
